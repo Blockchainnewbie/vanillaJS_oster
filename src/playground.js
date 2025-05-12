@@ -22,6 +22,9 @@ console.info("### Info ###")          // Informationen - in manchen Browsern spe
 // Tipp: Probiere console.table({name: "Max", alter: 30});
 // Deine Lösung hier:
 
+let vorname = "Max";
+let alter = 30;
+console.table([vorname, "Max", alter, 30]); // Beispiel-Objekt
 
 // ABSCHNITT 2: VARIABLEN UND DATENTYPEN
 // =====================================
@@ -186,10 +189,10 @@ console.log("Mit Multiplikation:", rechenOperation(10, 5, multipliziere));
 // 5.1. If-Else Bedingungen
 // ÜBUNG 5.1: Erstelle eine if-else-Struktur
 // Deine Lösung hier:
-const alter = 18;
-if (alter >= 18) {
+const alterPerson = 18;  // Umbenennung von 'alter' zu 'alterPerson'
+if (alterPerson >= 18) {
     console.log("Du bist volljährig.");
-} else if (alter >= 16) {
+} else if (alterPerson >= 16) {
     console.log("Du darfst bestimmte Dinge tun.");
 } else {
     console.log("Du bist noch minderjährig.");
@@ -231,6 +234,15 @@ while (zähler < 5) {
     console.log(`Zählerstand: ${zähler}`);
     zähler++;
 }
+
+/// 5.4.1 Do-While-Schleife
+/// Die Do-While-Schleife führt den Block mindestens einmal aus, auch wenn die Bedingung nicht erfüllt ist
+console.log("Do-While-Schleife:");
+let zählerDoWhile = 0;
+do {
+    console.log(`Zählerstand: ${zählerDoWhile}`);
+    zählerDoWhile++;
+} while (zählerDoWhile < 5);
 
 // 5.5. For...of Schleife (für Arrays)
 // ÜBUNG 5.5: Erstelle eine for...of Schleife für ein Array
