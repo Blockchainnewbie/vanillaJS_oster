@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Playground</title>
+    <script src="playground.js" defer></script>
+</head>
+
+<body>
+    <h1>JS Playground</h1>
+    <p>Öffne die Entwicklertools (F12), um die Konsole zu sehen.</p>
+
+    <!-- <script src="playground.js"></script> -->
+     <script>
+        /// window.alert("Hallo Welt!");
+
+        // Element für die Konsole erstellen
+        const consoleOutput = document.createElement('p');
+        consoleOutput.id = 'console-output';
+        document.body.appendChild(consoleOutput);
+
+        // Original console.log überschreiben
+        const originalConsoleLog = console.log;
+        console.log = function(...args) {
+            // Original-Funktion aufrufen
+            originalConsoleLog.apply(console, args);
+            
+            // Ausgabe im DOM anzeigen
+            const message = args.map(item => 
+                typeof item === 'object' ? JSON.stringify(item) : String(item)
+            ).join(' ');
+            
+            consoleOutput.innerHTML += message + '<br>';
+        };
+
+        // Teste die neue Konsole
+        // Stile für die Konsole hinzufügen
+        const style = document.createElement('style');
+        style.textContent = `
+            #console-output p {
+            margin: 8px 0;
+            padding: 4px;
+            border-bottom: 1px solid #eee;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Ändern der console.log Methode, um Abstände hinzuzufügen
+        console.log = function(...args) {
+            // Original-Funktion aufrufen
+            originalConsoleLog.apply(console, args);
+            
+            // Ausgabe im DOM mit Abstand anzeigen
+            const message = args.map(item => 
+            typeof item === 'object' ? JSON.stringify(item) : String(item)
+            ).join(' ');
+            
+            const logEntry = document.createElement('p');
+            logEntry.innerHTML = message;
+            consoleOutput.appendChild(logEntry);
+        };
+
+        console.log("Diese Nachrichten erscheinen im Browser-Fenster und in der Konsole.");
+        console.log("Du kannst auch Objekte ausgeben:", { name: "Test", value: 123 });
+
+    
+
+     </script>
+     
+</body>
+
+</html>
